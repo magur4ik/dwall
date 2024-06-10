@@ -1,0 +1,65 @@
+version: "2.4"
+services:
+  nginx:
+    container_name: lab3-nginx
+    hostname: lab3-nginx
+    image: nginx
+    volumes:
+      - ./volumes/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./var/www/lab3:/var/www/lab3
+      - ./volumes/etc/nginx/sites-enabled:/etc/nginx/sites-enabled:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - durovswall
+    restart:
+      always
+    networks:
+      default:
+        ipv4_address: 172.16.1.5
+  
+  postgres:
+    container_name: lab3-postgres
+    hostname: lab3-postgres
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=magure
+      - POSTGRES_DB=lab3
+    volumes:
+      -  /var/lib/postgres:/var/lib/postgres
+      - ./volumes/postgres/conf.d:/etc/postgres/conf.d:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: "exit 0"
+    networks:
+      default:
+        ipv4_address: 172.16.1.6
+  
+  durovswall:
+    container_name: lab3-durovswall
+    hostname: lab3-durovswall
+    build: ./volumes/build/durovswall
+    restart: always
+    ports:
+      - "7000:5000"
+    links:
+      - postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://magure:123@postgres:5432/lab3
+    networks:
+      default:
+        ipv4_address: 172.16.1.7
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.1.0/24

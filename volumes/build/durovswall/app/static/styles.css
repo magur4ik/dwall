@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    font-family: 'Arial', non-serif;
+    overflow-x: hidden;
+    color: #1f7edd;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(66, 206, 248);
+    transition: .5s;
+}
+
+a:hover{
+    color: rgb(37, 125, 151);
+}
+
+a.hdr_btns{
+    padding-right: 2px;
+}
+
+.header{
+    margin: 0 -10px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 10px #699ed4;
+}
+
+.a_hdr_btns{ 
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.logo{
+}
+
+.hdr_btns{
+    justify-content: right;
+}
+
+textarea#body{
+    display: inline-block;
+    width: 800px;
+    height: 75px;
+    resize: none;
+    border-color: lightgrey;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.post_form{
+    display: flex;
+}
+
+.post_form input#submit{
+    font-size: 24px;
+    width: 12%;
+    color: white;
+    background-color: #699ed4;
+    border-color: #699ed4;
+    transition: all .4s;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.form_wrap{
+    padding: 20px;
+    display: flex;
+    margin: auto;
+    width: 500px;
+    align-items: center;
+    flex-direction: column;
+}
+
+input, textarea{
+    padding: 6px 5px;
+}
+
+.form_wrap > :nth-child(1n), .login_form > :nth-child(1n) {
+    padding: 5px 0;
+}
+
+.login_form input#submit{
+    margin: auto;
+    width: 100px;
+    font-size: 24px;
+    color: white;
+    background-color: #699ed4;
+    border-color: #699ed4;
+    transition: all .4s;
+    border-radius: 10px;
+}
+
+.login_btn{
+    display: flex;
+}
+
+input#submit:hover{
+    background-color: #1b74ce;
+    color: rgb(255, 255, 255);
+    border-color: #1b74ce;
+}
+
+.wrap{
+    margin: auto;
+    padding: 0 10px;
+    width: 900px;
+    min-height: 100vh;
+    box-shadow: 0 0 10px #699ed4;
+    overflow-x: hidden;
+}
+
+.textarea_post{
+    padding: 10px 0;
+}
+
+.title{
+    padding-bottom: 10px;
+}
+
+.posts_cnt{
+    display: flex;
+    flex-direction: column;
+}
+
+.post_cnt{
+    margin: 5px 10px;
+    padding: 15px 6px;
+    border: 1px solid #1b74ce;
+    border-radius: 10px;
+    flex-direction: column;
+    box-shadow: 0 0 5px #699ed4;
+}
+
+.post_cnt table tbody tr td{
+    padding-left: 15px;
+}
+
+span{
+    font-weight: bold;
+}

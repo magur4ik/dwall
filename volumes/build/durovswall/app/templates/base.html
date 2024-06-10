@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %} {{ title }} | {% else %} Helo moto at {% endif %} Testin'</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css"/>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <h2 class="logo">Durov's wall</h2>
+            <div class="hdr_btns">
+                <a class="a_hdr_btns" href="/">Home</a>
+                {% if current_user.is_anonymous %}
+                <a class="a_hdr_btns" href="/login">Login</a>
+                {% else %}
+                <a class="a_hdr_btns" href="/user/{{current_user.username}}">Profile</a>
+                <a class="a_hdr_btns" href="/logout">Logout</a>
+                {% endif %}
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
