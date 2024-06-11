@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Upgrade apt and install Docker
-        run: apt -y upgrade && apt -y install docker && apt -y install docker-compose
+        run: sudo apt -y upgrade && sudo apt -y install docker && sudo apt -y install docker-compose
       - name: Get repository code
         uses: actions/checkout@v3
       - name: Up docker-compose
-        run: docker compose up
+        run: sudo docker compose up
   
   deploy:
     runs-on: ubuntu-latest
