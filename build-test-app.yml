@@ -23,8 +23,11 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v3
       - name: Stopping docker compose
-        run: sudo docker compose down
+        run: docker compose down
       - name: Rebuild docker compose images
-        run: sudo docker compose up -d --build
-        #tut klyuchi ssh nastraivayutsya
+        run: docker compose up -d --build
+      - run: cd ~/
+      - run: git clone https://github.com/stefanprodan/dockprom
+      - run: cd dockprom
+      - run: docker-compose up -d
       
